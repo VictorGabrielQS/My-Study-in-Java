@@ -20,7 +20,14 @@ public class Pessoa {
 
     public static void main(String[] args) {
 
-        //Pessoa pessoa = new Pessoa();
+
+        Pessoa pessoa = new Pessoa("João" , 20 , 1.75);
+        pessoa.exibirInformacoes();
+
+
+        Pessoa pessoa2 = new Pessoa("Maria" , 22 , 1.73);
+        pessoa2.exibirInformacoes();
+
 
     }
 

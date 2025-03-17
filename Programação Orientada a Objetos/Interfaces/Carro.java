@@ -1,6 +1,6 @@
 package Interfaces;
 
-public class Carro implements Interfaces.Veiculo {
+public class Carro implements Veiculo {
 
     @Override
     public void acelerar() {

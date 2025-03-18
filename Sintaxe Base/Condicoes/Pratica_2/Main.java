@@ -1,4 +1,4 @@
-package Condições.Pratica_2;
+package Condicoes.Pratica_2;
 
 /*
 

@@ -1,4 +1,4 @@
-package Condições.Pratica;
+package Condicoes.Pratica;
 
 public class Main {
     public static void main(String[] args) {

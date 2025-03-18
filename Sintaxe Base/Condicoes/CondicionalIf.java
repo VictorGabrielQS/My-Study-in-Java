@@ -1,4 +1,4 @@
-package Condições;
+package Condicoes;
 
 public class CondicionalIf {
     public static void main(String[] args) {

@@ -6,16 +6,9 @@ public class LoopWhile {
 
         //While :
 
-    /*
-
-    while (condição){
-        //Bloco de código a ser executado
-
-    }
-
-    */
-
         int i = 1;
+
+        int n = 0;
 
         while (i <= 5){
 
@@ -25,6 +18,23 @@ public class LoopWhile {
         }
 
 
+
+        String[] nome = {"Victor" , "Marcus" , "Maria"};
+
+        while (n < nome.length){
+            System.out.println("Nome da interação : " + nome[n]);
+            n++;
+        }
+
+
+        //do-while :
+
+        int d = 6;
+
+        do{
+            System.out.println("Interação : " + d);
+            d++;
+        }while (d <= 5);
 
 
     }

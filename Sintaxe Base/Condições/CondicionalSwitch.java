@@ -1,4 +1,4 @@
-package Condicoes;
+package Condições;
 
 public class CondicionalSwitch {
     public static void main(String[] args) {

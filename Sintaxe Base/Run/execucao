@@ -1,0 +1,224 @@
+Claro! Vamos falar sobre como **executar** (ou **run**) um programa Java. Depois de compilar e buildar seu código, você pode executá-lo para ver o resultado. A execução de um programa Java depende de como ele foi empacotado e do ambiente em que você está trabalhando.
+
+Aqui estão os principais cenários para executar um programa Java:
+
+---
+
+## 1. **Executando um arquivo `.class`**
+
+Se você compilou um arquivo `.java` manualmente usando o `javac`, pode executar o arquivo `.class` gerado usando o comando `java`.
+
+### Passos:
+1. Compile o arquivo `.java`:
+   ```bash
+   javac MeuPrograma.java
+   ```
+   Isso gera um arquivo `MeuPrograma.class`.
+
+2. Execute o arquivo `.class`:
+   ```bash
+   java MeuPrograma
+   ```
+
+### Exemplo:
+Suponha que você tenha o seguinte código em `MeuPrograma.java`:
+
+```java
+public class MeuPrograma {
+    public static void main(String[] args) {
+        System.out.println("Olá, mundo!");
+    }
+}
+```
+
+Compile e execute:
+```bash
+javac MeuPrograma.java
+java MeuPrograma
+```
+
+**Saída:**
+```
+Olá, mundo!
+```
+
+---
+
+## 2. **Executando um arquivo JAR**
+
+Se você empacotou seu programa em um arquivo JAR (usando Maven, Gradle ou manualmente), pode executá-lo usando o comando `java -jar`.
+
+### Passos:
+1. Crie o JAR (se ainda não tiver feito isso):
+   - Com Maven: `mvn package`
+   - Com Gradle: `gradle build`
+   - Manualmente: `jar cf meu-programa.jar *.class`
+
+2. Execute o JAR:
+   ```bash
+   java -jar meu-programa.jar
+   ```
+
+### Exemplo:
+Suponha que você tenha um JAR chamado `meu-programa.jar` com um método `main` definido no arquivo de manifesto.
+
+Execute:
+```bash
+java -jar meu-programa.jar
+```
+
+---
+
+## 3. **Executando com Maven**
+
+Se você está usando Maven, pode executar o programa diretamente usando o plugin `exec`.
+
+### Passos:
+1. Adicione o plugin `exec` ao `pom.xml`:
+   ```xml
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>exec-maven-plugin</artifactId>
+               <version>3.0.0</version>
+               <configuration>
+                   <mainClass>com.exemplo.MeuPrograma</mainClass>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+   ```
+
+2. Execute o programa:
+   ```bash
+   mvn exec:java -Dexec.mainClass="com.exemplo.MeuPrograma"
+   ```
+
+### Exemplo:
+Se o método `main` estiver na classe `com.exemplo.MeuPrograma`, execute:
+```bash
+mvn exec:java -Dexec.mainClass="com.exemplo.MeuPrograma"
+```
+
+---
+
+## 4. **Executando com Gradle**
+
+Se você está usando Gradle, pode executar o programa diretamente usando a tarefa `run`.
+
+### Passos:
+1. Adicione a configuração no `build.gradle`:
+   ```groovy
+   application {
+       mainClass = 'com.exemplo.MeuPrograma'
+   }
+   ```
+
+2. Execute o programa:
+   ```bash
+   gradle run
+   ```
+
+### Exemplo:
+Se o método `main` estiver na classe `com.exemplo.MeuPrograma`, execute:
+```bash
+gradle run
+```
+
+---
+
+## 5. **Executando em uma IDE**
+
+Se você está usando uma IDE como **IntelliJ IDEA**, **Eclipse** ou **VS Code**, pode executar o programa diretamente a partir da interface gráfica.
+
+### IntelliJ IDEA:
+1. Clique com o botão direito no arquivo `.java` que contém o método `main`.
+2. Selecione **Run 'NomeDaClasse'**.
+
+### Eclipse:
+1. Clique com o botão direito no arquivo `.java` que contém o método `main`.
+2. Selecione **Run As > Java Application**.
+
+### VS Code:
+1. Abra o arquivo `.java` que contém o método `main`.
+2. Clique no botão **Run** acima do método `main`.
+
+---
+
+## 6. **Executando com argumentos**
+
+Se o programa precisa de argumentos de linha de comando, você pode passá-los ao executar.
+
+### Exemplo:
+Suponha que você tenha o seguinte código:
+
+```java
+public class MeuPrograma {
+    public static void main(String[] args) {
+        for (String arg : args) {
+            System.out.println("Argumento: " + arg);
+        }
+    }
+}
+```
+
+#### Executando com argumentos:
+```bash
+java MeuPrograma arg1 arg2 arg3
+```
+
+**Saída:**
+```
+Argumento: arg1
+Argumento: arg2
+Argumento: arg3
+```
+
+#### No Maven:
+```bash
+mvn exec:java -Dexec.mainClass="com.exemplo.MeuPrograma" -Dexec.args="arg1 arg2 arg3"
+```
+
+#### No Gradle:
+```bash
+gradle run --args="arg1 arg2 arg3"
+```
+
+---
+
+## 7. **Executando em um contêiner Docker**
+
+Se você deseja executar o programa em um contêiner Docker, siga estes passos:
+
+1. Crie um `Dockerfile`:
+   ```dockerfile
+   FROM openjdk:11
+   COPY meu-programa.jar /app/meu-programa.jar
+   WORKDIR /app
+   CMD ["java", "-jar", "meu-programa.jar"]
+   ```
+
+2. Construa a imagem Docker:
+   ```bash
+   docker build -t meu-programa .
+   ```
+
+3. Execute o contêiner:
+   ```bash
+   docker run meu-programa
+   ```
+
+---
+
+## Resumo
+
+- **Executar um arquivo `.class`**: Use `java NomeDaClasse`.
+- **Executar um JAR**: Use `java -jar nome-do-jar.jar`.
+- **Executar com Maven**: Use `mvn exec:java`.
+- **Executar com Gradle**: Use `gradle run`.
+- **Executar em uma IDE**: Use as opções de execução da IDE.
+- **Passar argumentos**: Adicione os argumentos após o nome da classe ou JAR.
+- **Executar em Docker**: Crie uma imagem Docker e execute o contêiner.
+
+Com esses métodos, você pode executar seus programas Java em diferentes ambientes e cenários. Pratique cada um deles para se familiarizar com o processo! 😊

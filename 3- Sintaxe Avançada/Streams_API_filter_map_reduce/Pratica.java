@@ -1,5 +1,6 @@
 package Streams_API_filter_map_reduce;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -87,7 +88,10 @@ public class Pratica {
 
 
         List<Produto> maiorValor =  produtos.stream()
+        .sorted(Comparator.comparingDouble(Produto::preco).reversed())
         .toList();
+        System.out.println("Preco mais alto : " + maiorValor.get(0));
+        
 
     }
 }

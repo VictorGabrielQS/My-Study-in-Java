@@ -113,8 +113,6 @@ public class AuthController {
 
 
 
-
-
     // ✅ 1. Solicitação de redefinição (esqueci a senha)
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody EmailRequest request) {
